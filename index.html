@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NBA 2023-2024 Playoff Prediction</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Canvas element to draw the chart -->
+    <canvas id="voteChart" width="800" height="400"></canvas>
+
+    <script>
+        // Data for player names and scores
+        let playerNames = ['_w1998', 'Chrïs', 'Lance', '比爾', '安東東'];
+        let scores = [1, 1, 1, 1, 1];
+
+        // Function to sort data based on scores and generate ranks
+        function sortData(playerNames, scores) {
+            // Combine player names and scores into an array of objects
+            const data = playerNames.map((playerName, index) => ({
+                playerName,
+                score: scores[index]
+            }));
+            
+            // Sort the data array based on scores in descending order
+            data.sort((a, b) => b.score - a.score);
+            
+            // Extract sorted player names, scores, and generate ranks
+            const sortedPlayerNames = data.map(item => item.playerName);
+            const sortedScores = data.map(item => item.score);
+            const ranks = data.map((_, index) => `Rank ${index + 1}`);
+            
+            return { ranks, sortedPlayerNames, sortedScores };
+        }
+
+        // Sort the data based on scores and generate ranks
+        const { ranks, sortedPlayerNames, sortedScores } = sortData(playerNames, scores);
+
+        // Create labels by combining ranks and sorted player names
+        const labels = ranks.map((rank, index) => `${rank}: ${sortedPlayerNames[index]}`);
+
+        // Create a data object to hold the chart data
+        const data = {
+            labels: labels, // Use combined rank and player name as labels
+            datasets: [
+                {
+                    label: 'Scores', // Label for the dataset
+                    data: sortedScores, // Sorted scores data
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)', // Bar colors
+                }
+            ]
+        };
+
+        // Configuration options for the chart
+        const config = {
+            type: 'bar', // Chart type
+            data: data, // Chart data
+            options: {
+                indexAxis: 'y', // Use 'y' axis for horizontal orientation
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'NBA 2023-2024 Playoff Prediction'
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true, // Start x-axis at zero
+                        title: {
+                            display: true,
+                            text: 'Score'
+                        },
+                        ticks: {
+                            stepSize: 1 // Set x-axis interval to 1
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Player'
+                        }
+                    }
+                }
+            }
+        };
+
+        // Create a horizontal bar chart using Chart.js
+        const ctx = document.getElementById('voteChart').getContext('2d');
+        new Chart(ctx, config);
+    </script>
+</body>
+</html>
