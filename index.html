@@ -4,32 +4,94 @@
     <title>NBA 2023-2024 Playoff Prediction</title>
     <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    th, td {
+    <style>
+        /* Layout styles */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        /* Column styles */
+        .column {
+            flex: 1;
+            padding: 20px;
+        }
+        /* Center alignment for the table */
+        table {
+            margin: auto;
+        }
+        th, td {
         border: 1px solid black;
         padding: 8px;
         text-align: center;
-    }
+        }
 
-    th {
-        background-color: #f2f2f2;
-    }
-</style>
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
 <body>
-
     <center>
         <h1>NBA 2023-2024 Playoff Prediction</h1>
         <a href="https://www.nba.com/standings">NBA Playoff standings</a>
     </center>
 
-    <!-- Canvas element to draw the chart -->
-    <canvas id="voteChart" width="800" height="400"></canvas>
+    <!-- Container for the chart and table -->
+    <div class="container">
+        <!-- Left column for the chart -->
+        <div class="column">
+            <!-- Canvas element to draw the chart -->
+            <canvas id="voteChart" width="400" height="400"></canvas>
+        </div>
+
+        <!-- Right column for the table -->
+        <div class="column">
+            <table>
+                <tr>
+                    <th>Game</th>
+                    <th>_w1998</th>
+                    <th>Chrïs</th>
+                    <th>Lance</th>
+                    <th>比爾</th>
+                    <th>安東東</th>
+                </tr>
+                <tr>
+                    <td>西區附加賽: Lakers vs Pelicans</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                </tr>
+                <tr>
+                    <td>西區附加賽: Kings vs Warriors</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>東區附加賽: 76ers vs Heat</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>東區附加賽: Bulls vs Hawks</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <script>
         // Data for player names and scores
@@ -111,50 +173,5 @@
         const ctx = document.getElementById('voteChart').getContext('2d');
         new Chart(ctx, config);
     </script>
-    
-    <center>
-        <table>
-            <tr>
-                <th>Game</th>
-                <th>_w1998</th>
-                <th>Chrïs</th>
-                <th>Lance</th>
-                <th>比爾</th>
-                <th>安東東</th>
-            </tr>
-            <tr>
-                <td>西區附加賽: Lakers vs Pelicans</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-            </tr>
-            <tr>
-                <td>西區附加賽: Kings vs Warriors</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>東區附加賽: 76ers vs Heat</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>東區附加賽: Bulls vs Hawks</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-    </center>
 </body>
 </html>
