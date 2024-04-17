@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>NBA 2023-2024 Playoff Prediction</title>
     <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Grid.js library and theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
     <style>
         /* Layout styles */
         .container {
@@ -12,26 +16,15 @@
             align-items: center;
             padding: 20px;
         }
+
         /* Column styles */
         .column {
             flex: 1;
             padding: 20px;
         }
-        /* Center alignment for the table */
-        table {
-            margin: auto;
-        }
-        th, td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: center;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
     </style>
 </head>
+
 <body>
     <center>
         <h1>NBA 2023-2024 Playoff Prediction</h1>
@@ -48,48 +41,8 @@
 
         <!-- Right column for the table -->
         <div class="column">
-            <table>
-                <tr>
-                    <th>Game Matchup History</th>
-                    <th>_w1998</th>
-                    <th>Chrïs</th>
-                    <th>Lance</th>
-                    <th>比爾</th>
-                    <th>安東東</th>
-                </tr>
-                <tr>
-                    <td>西區附加賽: Lakers vs Pelicans</td>
-                    <td>&#10004;</td>
-                    <td>&#10004;</td>
-                    <td>&#10004;</td>
-                    <td>&#10004;</td>
-                    <td>&#10004;</td>
-                </tr>
-                <tr>
-                    <td>西區附加賽: Kings vs Warriors</td>
-                    <td>&#10008;</td>
-                    <td>&#10008;</td>
-                    <td>&#10008;</td>
-                    <td>&#10004;</td>
-                    <td>&#10004;</td>
-                </tr>
-                <tr>
-                    <td>東區附加賽: 76ers vs Heat</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>東區附加賽: Bulls vs Hawks</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+            <!-- Container for the Grid.js table -->
+            <div id="gridjs-table"></div>
         </div>
     </div>
 
@@ -98,6 +51,30 @@
         let playerNames = ['_w1998', 'Chrïs', 'Lance', '比爾', '安東東'];
         let scores = [1, 1, 1, 2, 2];
 
+        // Data for the Grid.js table
+        const gridData = [
+            ['Game Match', '_w1998', 'Chrïs', 'Lance', '比爾', '安東東'],
+            ['西區附加賽: Lakers vs Pelicans', '✅', '✅', '✅', '✅', '✅'],
+            ['西區附加賽: Kings vs Warriors', '❎', '❎', '❎', '✅', '✅'],
+            ['東區附加賽: 76ers vs Heat', '', '', '', '', ''],
+            ['東區附加賽: Bulls vs Hawks', '', '', '', '', '']
+            ['西區附加賽: Kings vs Pelicans', '', '', '', '', ''],
+        ];
+
+        // Initialize Grid.js table
+        const grid = new gridjs.Grid({
+            columns: ['Game', '_w1998', 'Chrïs', 'Lance', '比爾', '安東東'], // Column headers
+            data: gridData.slice(1), // Data for the table
+            resizable: true, // Allow columns to be resizable
+            pagination: {
+                enabled: true,
+                limit: 10 // Number of rows per page
+            }
+        });
+
+        // Render the Grid.js table in the specified container
+        grid.render(document.getElementById('gridjs-table'));
+
         // Function to sort data based on scores and generate ranks
         function sortData(playerNames, scores) {
             // Combine player names and scores into an array of objects
@@ -105,14 +82,14 @@
                 playerName,
                 score: scores[index]
             }));
-            
+
             // Sort the data array based on scores in descending order
             data.sort((a, b) => b.score - a.score);
-            
+
             // Initialize ranks array
             const ranks = [];
             let currentRank = 1;
-            
+
             // Generate ranks and handle ties
             for (let i = 0; i < data.length; i++) {
                 // If it's not the first item and the score is different from the previous item, increase the rank
@@ -122,11 +99,11 @@
                 // Push the current rank to the ranks array
                 ranks.push(`Rank ${currentRank}`);
             }
-            
+
             // Extract sorted player names and scores
             const sortedPlayerNames = data.map(item => item.playerName);
             const sortedScores = data.map(item => item.score);
-            
+
             return { ranks, sortedPlayerNames, sortedScores };
         }
 
@@ -187,4 +164,5 @@
         new Chart(ctx, config);
     </script>
 </body>
+
 </html>
