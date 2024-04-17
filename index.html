@@ -109,10 +109,23 @@
             // Sort the data array based on scores in descending order
             data.sort((a, b) => b.score - a.score);
             
-            // Extract sorted player names, scores, and generate ranks
+            // Initialize ranks array
+            const ranks = [];
+            let currentRank = 1;
+            
+            // Generate ranks and handle ties
+            for (let i = 0; i < data.length; i++) {
+                // If it's not the first item and the score is different from the previous item, increase the rank
+                if (i > 0 && data[i].score !== data[i - 1].score) {
+                    currentRank = i + 1;
+                }
+                // Push the current rank to the ranks array
+                ranks.push(`Rank ${currentRank}`);
+            }
+            
+            // Extract sorted player names and scores
             const sortedPlayerNames = data.map(item => item.playerName);
             const sortedScores = data.map(item => item.score);
-            const ranks = data.map((_, index) => `Rank ${index + 1}`);
             
             return { ranks, sortedPlayerNames, sortedScores };
         }
