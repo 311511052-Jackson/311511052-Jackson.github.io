@@ -22,13 +22,29 @@
             flex: 1;
             padding: 20px;
         }
+
+        body {
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            
+            /* Increase the alpha value to whiten the background more */
+            backdrop-filter: blur(10px) brightness(80%);
+        }
+
+        h1 {
+            color: white;
+        }
     </style>
 </head>
 
 <body>
     <center>
         <h1>NBA 2023-2024 Playoff Prediction</h1>
-        <a href="https://www.nba.com/standings">NBA Playoff standings</a>
+        <a href="https://www.nba.com/standings" style="color: white;">NBA Standings</a>
     </center>
 
     <!-- Container for the chart and table -->
@@ -137,10 +153,14 @@
                     label: 'Scores', // Label for the dataset
                     data: sortedScores, // Sorted scores data
                     backgroundColor: 'rgba(54, 162, 235, 0.7)', // Bar colors
+                    // bordercolor white
+                    borderColor: 'rgba(255, 255, 255, 1)', // Border color
+                    borderWidth: 1, // Border width
                 }
             ]
         };
 
+        
         // Configuration options for the chart
         const config = {
             type: 'bar', // Chart type
@@ -152,6 +172,9 @@
                     title: {
                         display: false,
                         text: 'NBA 2023-2024 Playoff Prediction'
+                    },
+                    legend: {
+                        display: false
                     }
                 },
                 scales: {
@@ -159,16 +182,34 @@
                         beginAtZero: true, // Start x-axis at zero
                         title: {
                             display: true,
-                            text: 'Score'
+                            text: 'Score',
+                            color: 'white', // Set text color to black
+                            font: {
+                                weight: 'bold' // Set text weight to bold
+                            }
                         },
                         ticks: {
-                            stepSize: 1 // Set x-axis interval to 1
+                            color: 'white', // Set text color to black
+                            stepSize: 1, // Set x-axis interval to 1
+                            font: {
+                                weight: 'bold' // Set text weight to bold
+                            }
                         }
                     },
                     y: {
                         title: {
                             display: true,
-                            text: 'Player'
+                            text: 'Player',
+                            color: 'white', // Set text color to black
+                            font: {
+                                weight: 'bold' // Set text weight to bold
+                            }
+                        },
+                        ticks: {
+                            color: 'white', // Set text color to black
+                            font: {
+                                weight: 'bold' // Set text weight to bold
+                            }
                         }
                     }
                 }
