@@ -48,23 +48,29 @@
 
     <script>
         // Data for player names and scores
-        let playerNames = ['_w1998', 'Chrïs', 'Lance', '比爾', '安東東'];
-        let scores = [3, 1, 3, 3, 2];
+        let playerNames = ['_w1998', 'Chrïs', 'Lance', '比爾', '安東東', 'PinYen'];
+        let scores = [3, 1, 3, 3, 2, 0];
 
         // Data for the Grid.js table
         const gridData = [
-            ['Game Match', '_w1998', 'Chrïs', 'Lance', '比爾', '安東東'],
-            ['西區附加賽: Kings vs Pelicans', '', '', '', '', ''],
-            ['東區附加賽: Bulls vs Heat', '', '', '', '', ''],
-            ['東區附加賽: 76ers vs Heat', '✅', '', '✅', '✅', ''],
-            ['東區附加賽: Bulls vs Hawks', '✅', '', '✅', '❎', ''],
-            ['西區附加賽: Lakers vs Pelicans', '✅', '✅', '✅', '✅', '✅'],
-            ['西區附加賽: Kings vs Warriors', '❎', '❎', '❎', '✅', '✅'],
+            ['Game Match', '_w1998', 'Chrïs', 'Lance', '比爾', '安東東', 'PinYen'],
+            ['東區首輪: Pacers vs Bucks', '', '', '', '', '', ''],
+            ['西區首輪: Mavericks vs Clippers', '', '', '', '', '', ''],
+            ['西區首輪: Lakers vs Nuggets', '', '', '', '', '', ''],
+            ['東區首輪: 76ers vs Knicks', '', '', '', '', '', ''],
+            ['西區首輪: Suns vs Timberwolves', '', '', '', '', '', ''],
+            ['東區首輪: Magic vs Cavaliers', '', '', '', '', '', ''],
+            ['西區附加賽: Kings vs Pelicans', '', '', '', '', '', ''],
+            ['東區附加賽: Bulls vs Heat', '', '', '', '', '', ''],
+            ['東區附加賽: 76ers vs Heat', '✅', '', '✅', '✅', '', ''],
+            ['東區附加賽: Bulls vs Hawks', '✅', '', '✅', '❎', '', ''],
+            ['西區附加賽: Lakers vs Pelicans', '✅', '✅', '✅', '✅', '✅', ''],
+            ['西區附加賽: Kings vs Warriors', '❎', '❎', '❎', '✅', '✅', ''],
         ];
 
         // Initialize Grid.js table
         const grid = new gridjs.Grid({
-            columns: ['Game', '_w1998', 'Chrïs', 'Lance', '比爾', '安東東'], // Column headers
+            columns: ['Game', '_w1998', 'Chrïs', 'Lance', '比爾', '安東東', 'PinYen'], // Column headers
             data: gridData.slice(1), // Data for the table
             resizable: true, // Allow columns to be resizable
             pagination: {
